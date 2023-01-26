@@ -84,6 +84,7 @@
           >
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
+
                 {{-- Bottono per la dashboard --}}
                 <li class="nav-item">
                   <a
@@ -94,6 +95,7 @@
                     Dashboard
                   </a>
                 </li>
+
                  {{-- bottone per la index --}}
                  <li class="nav-item">
                   <a
@@ -104,6 +106,18 @@
                     Index
                   </a>
                 </li>
+
+                {{-- bottone per la create --}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.project.create' ? 'bg-secondary' : '' }}"
+                    href="{{route('admin.projects.create')}}"
+                  >
+                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
+                    Crea nuovo progetto
+                  </a>
+                </li>
+
               </ul>
             </div>
           </nav>
