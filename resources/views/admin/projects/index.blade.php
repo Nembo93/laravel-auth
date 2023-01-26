@@ -24,7 +24,7 @@
                 <td>{{ $project->slug }}</td>
                 <td>
                     <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success"><i class="fa-solid fa-eye"></i></a>
-                {{-- <a href="{{ route('admin.projects.edit', $post) }}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a> --}}
+                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
                 <!-- Button trigger modal -->
                 {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{$project->id}}">
                     <i class="fa-solid fa-trash"></i>

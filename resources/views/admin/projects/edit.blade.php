@@ -5,7 +5,7 @@
   <div class="py-4">
     <h1>Modifica: {{ $project->title }}</h1>
     <div class="mt-4">
-        <form action="{{ route('admin.projects.update', $roject) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -14,7 +14,11 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione del progetto</label>
-                <textarea class="form-control" id="content" name="description" rows="10" placeholder="Descrivi il progetto">{{ old('content', $project->description) }}</textarea>
+                <textarea class="form-control" id="content" name="description" rows="10" placeholder="Descrivi il progetto">{{ old('description', $project->description) }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="customer" class="form-label">Nome cliente</label>
+              <input type="text" class="form-control" id="customer" name="customer" placeholder="Inserisci il nome del Cliente" value="{{ old('customer', $project->customer) }}">
             </div>
             <button type="submit" class="btn btn-primary">Modifica</button>
         </form>

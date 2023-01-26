@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="customer" class="form-label">Nome Cliente</label>
-                <input type="text" class="form-control" id="customer" name="customer" placeholder="Inserisci il nome del cliente" value="{{ old('title') }}">
+                <input type="text" class="form-control" id="customer" name="customer" placeholder="Inserisci il nome del cliente" value="{{ old('customer') }}">
             </div>
             <button type="submit" class="btn btn-primary">Crea</button>
         </form>
