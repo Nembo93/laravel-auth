@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Questa è la dashboard di backoffice</h1>
+    <h1>index</h1>
 @endsection
