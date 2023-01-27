@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -42,9 +43,14 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
+        
+        // $data['cover_image'] = Storage::disk('public')->put('uploads', $data['cover_image']);
+        $img_path = Storage::put('uploads', $data['cover_image']);
+
         $new_project = new Project();
         $new_project->fill($data);
         $new_project->slug = Str::slug($new_project->title);
+        $new_project->cover_image = $img_path;
         $new_project->save();
 
         return redirect()->route('admin.projects.index')->with('message', "Il Progetto $new_project->title è stato creato con successo!");
@@ -86,6 +92,14 @@ class ProjectController extends Controller
         $old_title = $project->title;
         $old_description = $project->description;
         $project->slug = Str::slug($data['title']);
+
+        // if ( isset($data['cover_image']) ) {
+        //     if( $project->cover_image ) {
+        //         Storage::disk('public')->delete($project->cover_image);
+        //     }
+        //     $data['cover_image'] = Storage::disk('public')->put('uploads', $data['cover_image']);
+        // }
+
         $project->update($data);
 
         return redirect()->route('admin.projects.index')->with('message', "Il progetto $old_title è stato aggiornato!");
@@ -100,6 +114,10 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $old_title = $project->title;
+
+        // if( $project->cover_image ) {
+        //     Storage::disk('public')->delete($project->cover_image);
+        // }
         
         $project->delete();
 
